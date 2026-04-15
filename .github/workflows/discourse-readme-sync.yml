@@ -1,0 +1,89 @@
+on:
+  workflow_call:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check if README.md changed
+        id: check
+        run: |
+          BEFORE="${{ github.event.before }}"
+          if [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
+            BEFORE="${{ github.sha }}^"
+          fi
+
+          CHANGED=$(git diff --name-only "$BEFORE" "${{ github.sha }}" -- README.md)
+
+          if [ -z "$CHANGED" ]; then
+            echo "no_change=true" >> $GITHUB_OUTPUT
+          else
+            echo "no_change=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Parse README body
+        id: readme
+        if: steps.check.outputs.no_change == 'false'
+        run: |
+          # Strip the first # heading line and any blank lines after it
+          BODY=$(awk '
+            /^# / && !found { found=1; next }
+            found && /^[[:space:]]*$/ && !body_started { next }
+            found { body_started=1; print }
+          ' README.md)
+
+          echo "body<<EOF" >> $GITHUB_OUTPUT
+          echo "$BODY" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Check GTM gallery status
+        id: gallery
+        if: steps.check.outputs.no_change == 'false'
+        run: |
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
+            "https://tagmanager.google.com/api/gallery/owners/stape-io/templates/${{ github.event.repository.name }}")
+          if [ "$STATUS" = "200" ]; then
+            echo "listed=true" >> $GITHUB_OUTPUT
+          else
+            echo "listed=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Update Discourse post
+        if: steps.check.outputs.no_change == 'false'
+        env:
+          POST_ID: ${{ vars.COMMUNITY_POST_ID }}
+          API_KEY: ${{ secrets.COMMUNITY_API_KEY }}
+          API_USERNAME: ${{ secrets.COMMUNITY_API_USERNAME }}
+          BODY: ${{ steps.readme.outputs.body }}
+          GALLERY_LISTED: ${{ steps.gallery.outputs.listed }}
+        run: |
+          REPO_NAME="${{ github.event.repository.name }}"
+          if [ "$GALLERY_LISTED" = "true" ]; then
+            GALLERY_LINE="### GTM Gallery Status
+🟢 [Listed](https://tagmanager.google.com/gallery/#/owners/stape-io/templates/${REPO_NAME})"
+          else
+            GALLERY_LINE="### GTM Gallery Status
+🔴 Not listed"
+          fi
+
+          FULL_BODY="$(printf '%s\n\n%s' "$BODY" "$GALLERY_LINE")"
+
+          STATUS=$(curl -s -o /tmp/discourse_response.json -w "%{http_code}" \
+            -X PUT "https://community.stape.io/posts/${POST_ID}.json" \
+            -H "Content-Type: application/json" \
+            -H "Api-Key: ${API_KEY}" \
+            -H "Api-Username: ${API_USERNAME}" \
+            --data-raw "$(jq -n --arg raw "$FULL_BODY" '{post: {raw: $raw}}')")
+
+          echo "Response: $STATUS"
+          cat /tmp/discourse_response.json
+
+          if [ "$STATUS" != "200" ]; then
+            echo "Failed to update post"
+            exit 1
+          fi

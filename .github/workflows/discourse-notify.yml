@@ -1,0 +1,94 @@
+on:
+  workflow_call:
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get template.tpl diff for entire push
+        id: diff
+        run: |
+          BEFORE="${{ github.event.before }}"
+          if [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
+            BEFORE="${{ github.sha }}^"
+          fi
+
+          DIFF=$(git diff "$BEFORE" "${{ github.sha }}" -- template.tpl)
+
+          if [ -z "$DIFF" ]; then
+            echo "no_change=true" >> $GITHUB_OUTPUT
+          else
+            echo "no_change=false" >> $GITHUB_OUTPUT
+            echo "diff<<EOF" >> $GITHUB_OUTPUT
+            echo "$DIFF" >> $GITHUB_OUTPUT
+            echo "EOF" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Generate summary with Copilot
+        id: summary
+        if: steps.diff.outputs.no_change == 'false'
+        uses: actions/ai-inference@v1
+        with:
+          model: openai/gpt-4o
+          prompt: |
+            You are a technical writer. Review the following git diff for the file `template.tpl` and write a concise, descriptive changelog message (2–4 sentences) suitable for a community post. Focus on what changed and why it matters to users. Do not include the raw diff in your response.
+
+            Diff:
+            ${{ steps.diff.outputs.diff }}
+
+      - name: Check GTM gallery status
+        id: gallery
+        if: steps.diff.outputs.no_change == 'false'
+        run: |
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
+            "https://tagmanager.google.com/api/gallery/owners/stape-io/templates/${{ github.event.repository.name }}")
+          if [ "$STATUS" = "200" ]; then
+            echo "listed=true" >> $GITHUB_OUTPUT
+          else
+            echo "listed=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Post to Community
+        if: steps.diff.outputs.no_change == 'false'
+        env:
+          TOPIC_ID: ${{ vars.COMMUNITY_TOPIC_ID }}
+          API_KEY: ${{ secrets.COMMUNITY_API_KEY }}
+          API_USERNAME: ${{ secrets.COMMUNITY_API_USERNAME }}
+          COMMIT_MSG: ${{ github.event.head_commit.message }}
+          COMMIT_URL: ${{ github.event.repository.html_url }}/commit/${{ github.sha }}
+          REPO: ${{ github.repository }}
+          AI_SUMMARY: ${{ steps.summary.outputs.response }}
+          GALLERY_LISTED: ${{ steps.gallery.outputs.listed }}
+        run: |
+          REPO_NAME="${{ github.event.repository.name }}"
+          if [ "$GALLERY_LISTED" = "true" ]; then
+            GALLERY_LINE="### GTM Gallery Status
+🟢 [Listed](https://tagmanager.google.com/gallery/#/owners/stape-io/templates/${REPO_NAME})"
+          else
+            GALLERY_LINE="### GTM Gallery Status
+🔴 Not listed"
+          fi
+
+          BODY="$(cat <<EOF
+          **${REPO}** — merged into \`main\`: [${COMMIT_MSG}](${COMMIT_URL})
+
+          ${AI_SUMMARY}
+
+          ${GALLERY_LINE}
+          EOF
+          )"
+
+          curl -s -o /dev/null -w "%{http_code}" \
+            -X POST "https://community.stape.io/posts.json" \
+            -H "Content-Type: application/json" \
+            -H "Api-Key: ${API_KEY}" \
+            -H "Api-Username: ${API_USERNAME}" \
+            --data-raw "$(jq -n --arg topic_id "$TOPIC_ID" --arg raw "$BODY" \
+              '{topic_id: ($topic_id | tonumber), raw: $raw}')"
