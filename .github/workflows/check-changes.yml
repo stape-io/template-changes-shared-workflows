@@ -1,0 +1,64 @@
+on:
+  workflow_call:
+    outputs:
+      template_changed:
+        value: ${{ jobs.detect.outputs.template_changed }}
+      readme_changed:
+        value: ${{ jobs.detect.outputs.readme_changed }}
+      commit_message:
+        value: ${{ jobs.detect.outputs.commit_message }}
+      commit_url:
+        value: ${{ jobs.detect.outputs.commit_url }}
+
+jobs:
+  detect:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    outputs:
+      template_changed: ${{ steps.filter.outputs.template_changed }}
+      readme_changed: ${{ steps.filter.outputs.readme_changed }}
+      commit_message: ${{ steps.info.outputs.message }}
+      commit_url: ${{ steps.info.outputs.url }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get commit info
+        id: info
+        run: |
+          MESSAGE=$(git log -1 --format=%s "${{ github.sha }}")
+          echo "message<<EOF" >> $GITHUB_OUTPUT
+          echo "$MESSAGE" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+          echo "url=${{ github.event.repository.html_url }}/commit/${{ github.sha }}" >> $GITHUB_OUTPUT
+
+      - name: Detect template.tpl and README changes
+        id: filter
+        run: |
+          BEFORE="${{ github.event.before }}"
+          AFTER="${{ github.sha }}"
+
+          if [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
+            CHANGED=$(git ls-tree -r --name-only "$AFTER")
+          else
+            CHANGED=$(git diff --name-only "$BEFORE" "$AFTER")
+          fi
+
+          if echo "$CHANGED" | grep -q "^template\.tpl$"; then
+            TEMPLATE_CHANGED=true
+          else
+            TEMPLATE_CHANGED=false
+          fi
+
+          if echo "$CHANGED" | grep -q "^README\.md$"; then
+            README_CHANGED=true
+          else
+            README_CHANGED=false
+          fi
+
+          echo "template_changed=$TEMPLATE_CHANGED" >> $GITHUB_OUTPUT
+          echo "readme_changed=$README_CHANGED" >> $GITHUB_OUTPUT
+          echo "Decision: template_changed=$TEMPLATE_CHANGED readme_changed=$README_CHANGED"

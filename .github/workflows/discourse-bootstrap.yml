@@ -1,0 +1,102 @@
+on:
+  workflow_call:
+    outputs:
+      topic_id:
+        value: ${{ jobs.bootstrap.outputs.topic_id }}
+      post_id:
+        value: ${{ jobs.bootstrap.outputs.post_id }}
+
+jobs:
+  bootstrap:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: write
+    outputs:
+      topic_id: ${{ steps.resolve.outputs.topic_id }}
+      post_id: ${{ steps.resolve.outputs.post_id }}
+    steps:
+      - name: Check if already bootstrapped
+        id: check
+        run: |
+          if [ -n "${{ vars.COMMUNITY_TOPIC_ID }}" ] && [ -n "${{ vars.COMMUNITY_POST_ID }}" ]; then
+            echo "ready=true" >> $GITHUB_OUTPUT
+          else
+            echo "ready=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Checkout repository
+        if: steps.check.outputs.ready == 'false'
+        uses: actions/checkout@v4
+
+      - name: Create Discourse topic and set repo vars
+        id: create
+        if: steps.check.outputs.ready == 'false'
+        env:
+          API_KEY: ${{ secrets.COMMUNITY_API_KEY }}
+          API_USERNAME: ${{ secrets.COMMUNITY_API_USERNAME }}
+          CATEGORY_ID: ${{ vars.COMMUNITY_CATEGORY_ID }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          TITLE=$(awk '/^# /{print substr($0, 3); exit}' README.md)
+          BODY=$(awk '
+            /^# / && !found { found=1; next }
+            found && /^[[:space:]]*$/ && !started { next }
+            found { started=1; print }
+          ' README.md)
+
+          if [ ${#TITLE} -gt 70 ]; then
+            TITLE="${TITLE:0:69}…"
+          fi
+
+          RESPONSE=$(curl -s \
+            -X POST "https://community.stape.io/posts.json" \
+            -H "Content-Type: application/json" \
+            -H "Api-Key: ${API_KEY}" \
+            -H "Api-Username: ${API_USERNAME}" \
+            -H "User-Agent: curl/8.4.0" \
+            --data-raw "$(jq -n \
+              --arg title "$TITLE" \
+              --arg raw "$BODY" \
+              --argjson category "$CATEGORY_ID" \
+              '{title: $title, raw: $raw, category: $category}')")
+
+          TOPIC_ID=$(echo "$RESPONSE" | jq -r '.topic_id')
+          if ! [[ "$TOPIC_ID" =~ ^[0-9]+$ ]]; then
+            echo "Failed to create Discourse topic. Response:"
+            echo "$RESPONSE"
+            exit 1
+          fi
+
+          POST_ID=$(curl -s \
+            "https://community.stape.io/t/${TOPIC_ID}.json" \
+            -H "Api-Key: ${API_KEY}" \
+            -H "Api-Username: ${API_USERNAME}" \
+            -H "User-Agent: curl/8.4.0" \
+            | jq -r '.post_stream.posts[0].id')
+          if ! [[ "$POST_ID" =~ ^[0-9]+$ ]]; then
+            echo "Failed to fetch post ID for topic ${TOPIC_ID}"
+            exit 1
+          fi
+
+          echo "topic_id=$TOPIC_ID" >> $GITHUB_OUTPUT
+          echo "post_id=$POST_ID" >> $GITHUB_OUTPUT
+
+          gh variable set COMMUNITY_TOPIC_ID --body "$TOPIC_ID" --repo "$REPO"
+          gh variable set COMMUNITY_POST_ID --body "$POST_ID" --repo "$REPO"
+
+      - name: Resolve IDs
+        id: resolve
+        run: |
+          if [ "${{ steps.check.outputs.ready }}" = "true" ]; then
+            TOPIC_ID="${{ vars.COMMUNITY_TOPIC_ID }}"
+            POST_ID="${{ vars.COMMUNITY_POST_ID }}"
+            echo "Already bootstrapped: topic_id=$TOPIC_ID, post_id=$POST_ID"
+          else
+            TOPIC_ID="${{ steps.create.outputs.topic_id }}"
+            POST_ID="${{ steps.create.outputs.post_id }}"
+            echo "Newly bootstrapped: topic_id=$TOPIC_ID, post_id=$POST_ID"
+          fi
+          echo "topic_id=$TOPIC_ID" >> $GITHUB_OUTPUT
+          echo "post_id=$POST_ID" >> $GITHUB_OUTPUT
