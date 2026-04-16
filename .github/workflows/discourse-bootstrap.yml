@@ -36,7 +36,7 @@ jobs:
           API_KEY: ${{ secrets.COMMUNITY_API_KEY }}
           API_USERNAME: ${{ secrets.COMMUNITY_API_USERNAME }}
           CATEGORY_ID: ${{ vars.COMMUNITY_CATEGORY_ID }}
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.PAT_FOR_VARIABLES }}
           REPO: ${{ github.repository }}
         run: |
           TITLE=$(awk '/^# /{print substr($0, 3); exit}' README.md)
