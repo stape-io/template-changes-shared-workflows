@@ -42,8 +42,27 @@ jobs:
             BEFORE=$(git hash-object -t tree /dev/null)
           fi
 
-          DIFF=$(git diff "$BEFORE" "$HEAD" -- template.tpl)
-          echo "Diff size: $(printf '%s' "$DIFF" | wc -l) lines"
+          # Detect if template.tpl is brand new (did not exist before this push)
+          if git show "${BEFORE}:template.tpl" > /dev/null 2>&1; then
+            echo "is_new_file=false" >> $GITHUB_OUTPUT
+          else
+            echo "is_new_file=true" >> $GITHUB_OUTPUT
+          fi
+
+          # Token Minimization Strategy 1: -U0 removes all context lines at the git level
+          # Token Minimization Strategy 2: grep -v '^ ' strips any residual unchanged lines
+          DIFF=$(git diff -U0 "$BEFORE" "$HEAD" -- template.tpl | grep -v '^ ')
+
+          LINES=$(printf '%s' "$DIFF" | wc -l)
+          echo "Diff size: ${LINES} lines"
+
+          # Estimate token count (~4 chars/token) and warn if approaching the 8K limit
+          CHARS=$(printf '%s' "$DIFF" | wc -c)
+          EST_TOKENS=$(( CHARS / 4 ))
+          echo "Estimated tokens: ${EST_TOKENS}"
+          if [ "$EST_TOKENS" -gt 6000 ]; then
+            echo "::warning::Diff estimated at ${EST_TOKENS} tokens, which is close to the 8K model input limit. Consider a chunk-and-summarize strategy for large diffs."
+          fi
 
           echo "diff<<EOF" >> $GITHUB_OUTPUT
           echo "$DIFF" >> $GITHUB_OUTPUT
@@ -51,14 +70,33 @@ jobs:
 
       - name: Generate summary with Copilot
         id: summary
+        if: steps.diff.outputs.is_new_file != 'true'
         uses: actions/ai-inference@v1
         with:
-          model: openai/gpt-4o
+          model: openai/gpt-4.1-mini
           prompt: |
-            Review the following git diff for the file `template.tpl` and write a concise, descriptive changelog message (2–4 sentences) suitable for a community post. Focus on what changed and why it matters to users. Do not include the raw diff in your response.
+            Review the following git diff for the file `template.tpl` and write a concise, descriptive changelog message suitable for a community post. Focus on what changed and why. Do not include the raw diff in your response.
+
+            Example output:
+            - Pixel script (.js) now loads only after consent is granted. Previously, the
+              script loaded immediately regardless of consent state.
+            - Added TikTok Consent Mode to Google Consent Mode option.
+            - Fixed "Additional Event Parameters" fields not being read due to a field
+              name mismatch between the UI and the tag code.
+            - Updated partner name to stape_gtm_1_2_0.
+            - Removed duplicate email field reference in user data mapping.
 
             Diff:
             ${{ steps.diff.outputs.diff }}
+
+      - name: Set final summary
+        id: final_summary
+        run: |
+          if [ "${{ steps.diff.outputs.is_new_file }}" = "true" ]; then
+            echo "text=First version" >> $GITHUB_OUTPUT
+          else
+            echo "text=${{ steps.summary.outputs.response }}" >> $GITHUB_OUTPUT
+          fi
 
       - name: Check GTM gallery status
         id: gallery
@@ -80,7 +118,7 @@ jobs:
           COMMIT_URL: ${{ inputs.commit_url }}
           REPO: ${{ github.repository }}
           REPO_NAME: ${{ github.event.repository.name }}
-          AI_SUMMARY: ${{ steps.summary.outputs.response }}
+          AI_SUMMARY: ${{ steps.final_summary.outputs.text }}
           GALLERY_LISTED: ${{ steps.gallery.outputs.listed }}
         run: |
           if [ "$GALLERY_LISTED" = "true" ]; then
