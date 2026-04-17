@@ -9,15 +9,23 @@ on:
 jobs:
   bootstrap:
     uses: stape-io/template-changes-shared-workflows/.github/workflows/discourse-bootstrap.yml@main
+    permissions:
+      actions: write
+      contents: read
     secrets: inherit
 
   check-changes:
     uses: stape-io/template-changes-shared-workflows/.github/workflows/check-changes.yml@main
+    permissions:
+      contents: write
 
   notify-template-change:
     needs: [bootstrap, check-changes]
     if: needs.check-changes.outputs.template_changed == 'true'
     uses: stape-io/template-changes-shared-workflows/.github/workflows/discourse-notify.yml@main
+    permissions:
+      contents: read
+      models: read
     with:
       before_sha: ${{ github.event.before }}
       head_sha: ${{ github.sha }}

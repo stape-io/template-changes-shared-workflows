@@ -13,4 +13,6 @@ on:
 jobs:
   gallery-status:
     uses: stape-io/template-changes-shared-workflows/.github/workflows/gallery-status.yml@main
+    permissions:
+      contents: write
     secrets: inherit
