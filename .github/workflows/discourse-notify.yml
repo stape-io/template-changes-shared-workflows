@@ -95,7 +95,12 @@ jobs:
           if [ "${{ steps.diff.outputs.is_new_file }}" = "true" ]; then
             echo "text=First version" >> $GITHUB_OUTPUT
           else
-            echo "text=${{ steps.summary.outputs.response }}" >> $GITHUB_OUTPUT
+            {
+              echo "text<<EOF"
+              printf '%s' "${{ steps.summary.outputs.response }}"
+              echo ""
+              echo "EOF"
+            } >> $GITHUB_OUTPUT
           fi
 
       - name: Check GTM gallery status
