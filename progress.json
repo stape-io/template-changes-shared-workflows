@@ -1,0 +1,847 @@
+{
+  "created": [
+    {
+      "repo": "stape-io/tiktok-web-tag",
+      "url": "https://community.stape.io/t/tiktok-pixel-for-google-tag-manager-web/3860",
+      "topic_id": 3860,
+      "post_id": 9210
+    },
+    {
+      "repo": "stape-io/activecampaign-tag",
+      "url": "https://community.stape.io/t/activecampaign-tag-for-google-tag-manager-server-side/3861",
+      "topic_id": 3861,
+      "post_id": 9211
+    },
+    {
+      "repo": "stape-io/file-proxy-client",
+      "url": "https://community.stape.io/t/file-proxy-client-for-google-tag-manager-server-side/3875",
+      "topic_id": 3875,
+      "post_id": 9212
+    },
+    {
+      "repo": "stape-io/outbrain-tag",
+      "url": "https://community.stape.io/t/outbrain-tag-for-google-tag-manager-server-side/3887",
+      "topic_id": 3887,
+      "post_id": 9213
+    },
+    {
+      "repo": "stape-io/facebook-tag",
+      "url": "already_exists",
+      "topic_id": null
+    },
+    {
+      "repo": "stape-io/adform-tag",
+      "topic_id": 3905,
+      "url": "https://community.stape.io/t/adform-tag-for-google-tag-manager-server-side/3905",
+      "post_id": 9215
+    },
+    {
+      "repo": "stape-io/admitad-tag",
+      "topic_id": 3906,
+      "url": "https://community.stape.io/t/admitad-tag-for-google-tag-manager-server-side/3906",
+      "post_id": 9216
+    },
+    {
+      "repo": "stape-io/adroll-tag",
+      "topic_id": 3907,
+      "url": "https://community.stape.io/t/adroll-tag-for-google-tag-manager-server-side/3907",
+      "post_id": 9217
+    },
+    {
+      "repo": "stape-io/adtraction-tag",
+      "topic_id": 3908,
+      "url": "https://community.stape.io/t/adtraction-tag-for-google-tag-manager-server-side/3908",
+      "post_id": 9218
+    },
+    {
+      "repo": "stape-io/affiliate-conversion-tag",
+      "topic_id": 3909,
+      "url": "https://community.stape.io/t/affiliate-conversion-tag-for-google-tag-manager-server-side/3909",
+      "post_id": 9219
+    },
+    {
+      "repo": "stape-io/affiliate-future-server-tag",
+      "topic_id": 3910,
+      "url": "https://community.stape.io/t/affiliate-future-tag-for-google-tag-manager-server-side/3910",
+      "post_id": 9220
+    },
+    {
+      "repo": "stape-io/amazon-tag",
+      "topic_id": 3911,
+      "url": "https://community.stape.io/t/amazon-ads-tag-for-google-tag-manager-server-side/3911",
+      "post_id": 9221
+    },
+    {
+      "repo": "stape-io/array-builder-variable",
+      "topic_id": 3912,
+      "url": "https://community.stape.io/t/array-builder-variable-for-google-tag-manager-server-container/3912",
+      "post_id": 9222
+    },
+    {
+      "repo": "stape-io/attentive-tag",
+      "topic_id": 3913,
+      "url": "https://community.stape.io/t/attentive-tag-for-google-tag-manager-server-side/3913",
+      "post_id": 9223
+    },
+    {
+      "repo": "stape-io/awin-conversion-api-tag",
+      "topic_id": 3914,
+      "url": "https://community.stape.io/t/awin-conversion-api-tag-for-google-tag-manager-server-side/3914",
+      "post_id": 9224
+    },
+    {
+      "repo": "stape-io/awin-tag",
+      "topic_id": 3915,
+      "url": "https://community.stape.io/t/awin-tag-for-google-tag-manager-server-side/3915",
+      "post_id": 9225
+    },
+    {
+      "repo": "stape-io/axon-tag",
+      "topic_id": 3916,
+      "url": "https://community.stape.io/t/axon-applovin-server-api-tag-for-gtm-server-side/3916",
+      "post_id": 9226
+    },
+    {
+      "repo": "stape-io/braze-server-tag",
+      "topic_id": 3917,
+      "url": "https://community.stape.io/t/braze-tag-for-google-tag-manager-server-side/3917",
+      "post_id": 9227
+    },
+    {
+      "repo": "stape-io/brevo-tag",
+      "topic_id": 3918,
+      "url": "https://community.stape.io/t/brevo-tag-for-server-google-tag-manager/3918",
+      "post_id": 9228
+    },
+    {
+      "repo": "stape-io/channel-flow-tag",
+      "topic_id": 3919,
+      "url": "https://community.stape.io/t/channel-flow-tag-for-google-tag-manager-server-side/3919",
+      "post_id": 9229
+    },
+    {
+      "repo": "stape-io/event-enricher-tag",
+      "topic_id": 3933,
+      "url": "https://community.stape.io/t/event-enricher-tag-for-google-tag-manager-server-side/3933",
+      "post_id": 9231
+    },
+    {
+      "repo": "stape-io/cj-tag",
+      "topic_id": 3934,
+      "url": "https://community.stape.io/t/cj-tag-for-google-tag-manager-server-side/3934",
+      "post_id": 9232
+    },
+    {
+      "repo": "stape-io/consent-parser-variable",
+      "topic_id": 3935,
+      "url": "https://community.stape.io/t/consent-parser-variable-for-google-tag-manager-server-container/3935",
+      "post_id": 9233
+    },
+    {
+      "repo": "stape-io/contactout-lookup-server",
+      "topic_id": 3936,
+      "url": "https://community.stape.io/t/contactout-lookup-variable-for-google-tag-manager-server-container/3936",
+      "post_id": 9234
+    },
+    {
+      "repo": "stape-io/cookie-extender-tag",
+      "topic_id": 3937,
+      "url": "https://community.stape.io/t/cookie-extender-tag-for-google-tag-manager-server-container/3937",
+      "post_id": 9235
+    },
+    {
+      "repo": "stape-io/cookie-restore-tag",
+      "topic_id": 3938,
+      "url": "https://community.stape.io/t/cookie-restore-tag-for-google-tag-manager-server-container/3938",
+      "post_id": 9236
+    },
+    {
+      "repo": "stape-io/customer-tag",
+      "topic_id": 3939,
+      "url": "https://community.stape.io/t/customer-io-tag-for-google-tag-manager-server-side/3939",
+      "post_id": 9237
+    },
+    {
+      "repo": "stape-io/data-client",
+      "topic_id": 3940,
+      "url": "https://community.stape.io/t/data-client-for-google-tag-manager-server-side/3940",
+      "post_id": 9238
+    },
+    {
+      "repo": "stape-io/data-tag",
+      "topic_id": 3941,
+      "url": "https://community.stape.io/t/data-tag-for-google-tag-manager-web-container/3941",
+      "post_id": 9239
+    },
+    {
+      "repo": "stape-io/data-variable",
+      "topic_id": 3942,
+      "url": "https://community.stape.io/t/data-variable-for-google-tag-manager-web-container/3942",
+      "post_id": 9240
+    },
+    {
+      "repo": "stape-io/days-in-seconds-variable",
+      "topic_id": 3943,
+      "url": "https://community.stape.io/t/days-in-seconds-variable-for-google-tag-manager-server-container/3943",
+      "post_id": 9241
+    },
+    {
+      "repo": "stape-io/duplicate-transaction-checker-variable",
+      "topic_id": 3944,
+      "url": "https://community.stape.io/t/duplicate-transaction-checker-variable-for-google-tag-manager-server/3944",
+      "post_id": 9242
+    },
+    {
+      "repo": "stape-io/effinity-tag",
+      "topic_id": 3945,
+      "url": "https://community.stape.io/t/effinity-tag-for-google-tag-manager-server-side/3945",
+      "post_id": 9243
+    },
+    {
+      "repo": "stape-io/everflow-tag",
+      "topic_id": 3946,
+      "url": "https://community.stape.io/t/everflow-tag-for-gtm-server-side/3946",
+      "post_id": 9244
+    },
+    {
+      "repo": "stape-io/exoclick-tag",
+      "topic_id": 3947,
+      "url": "https://community.stape.io/t/exoclick-tag-for-gtm-server-side/3947",
+      "post_id": 9245
+    },
+    {
+      "repo": "stape-io/facebook-leads-tag",
+      "topic_id": 3950,
+      "url": "https://community.stape.io/t/facebook-leads-api-tag-for-google-tag-manager-server-container/3950",
+      "post_id": 9248
+    },
+    {
+      "repo": "stape-io/facebook-offline-conversion-tag",
+      "topic_id": 3951,
+      "url": "https://community.stape.io/t/deprecated-facebook-offline-conversion-tag-for-google-tag-manager-s/3951",
+      "post_id": 9249
+    },
+    {
+      "repo": "stape-io/facebook-parameter-generator-variable",
+      "topic_id": 3952,
+      "url": "https://community.stape.io/t/facebook-parameter-generator-variable-for-google-tag-manager-web-cont/3952",
+      "post_id": 9250
+    },
+    {
+      "repo": "stape-io/fb-tag",
+      "topic_id": 3953,
+      "url": "https://community.stape.io/t/facebook-pixel-by-stape-for-google-tag-manager-web/3953",
+      "post_id": 9251
+    },
+    {
+      "repo": "stape-io/firestore-request-delay-tag",
+      "topic_id": 3954,
+      "url": "https://community.stape.io/t/firestore-request-delay-tag-for-google-tag-manager-server-side/3954",
+      "post_id": 9252
+    },
+    {
+      "repo": "stape-io/firestore-restore-variable",
+      "topic_id": 3955,
+      "url": "https://community.stape.io/t/firestore-restore-variable-for-google-tag-manager-server-container/3955",
+      "post_id": 9253
+    },
+    {
+      "repo": "stape-io/firestore-writer-tag",
+      "topic_id": 3956,
+      "url": "https://community.stape.io/t/firestore-writer-tag-for-google-tag-manager-server-side/3956",
+      "post_id": 9254
+    },
+    {
+      "repo": "stape-io/ga4-advanced-tag",
+      "topic_id": 3957,
+      "url": "https://community.stape.io/t/ga4-advanced-tag-for-google-tag-manager-server-side/3957",
+      "post_id": 9255
+    },
+    {
+      "repo": "stape-io/gads-conversion-adjustments-tag",
+      "topic_id": 3958,
+      "url": "https://community.stape.io/t/google-ads-conversion-adjustments-tag-for-google-tag-manager-server-c/3958",
+      "post_id": 9256
+    },
+    {
+      "repo": "stape-io/gads-conversion-improver-tag",
+      "topic_id": 3959,
+      "url": "https://community.stape.io/t/google-ads-conversion-improver-tag-for-google-tag-manager-server-cont/3959",
+      "post_id": 9257
+    },
+    {
+      "repo": "stape-io/gads-offline-conversion-tag",
+      "topic_id": 3960,
+      "url": "https://community.stape.io/t/google-ads-offline-conversion-tag-for-google-tag-manager-server-conta/3960",
+      "post_id": 9258
+    },
+    {
+      "repo": "stape-io/gohighlevel-tag",
+      "topic_id": 3961,
+      "url": "https://community.stape.io/t/gohighlevel-tag-for-google-tag-manager-server-side/3961",
+      "post_id": 9259
+    },
+    {
+      "repo": "stape-io/google-conversion-events-tag",
+      "topic_id": 3962,
+      "url": "https://community.stape.io/t/google-conversion-events-tag-for-google-tag-manager-server-side/3962",
+      "post_id": 9260
+    },
+    {
+      "repo": "stape-io/google-customer-match-tag",
+      "topic_id": 3963,
+      "url": "https://community.stape.io/t/google-customer-match-tag-for-google-tag-manager-server-side/3963",
+      "post_id": 9261
+    },
+    {
+      "repo": "stape-io/google-customer-reviews-tag",
+      "topic_id": 3964,
+      "url": "https://community.stape.io/t/google-customer-reviews-tag-for-google-tag-manager-web/3964",
+      "post_id": 9262
+    },
+    {
+      "repo": "stape-io/http-lookup-variable",
+      "topic_id": 3965,
+      "url": "https://community.stape.io/t/http-lookup-variable-for-google-tag-manager-server-side/3965",
+      "post_id": 9263
+    },
+    {
+      "repo": "stape-io/hubspot-lookup-variable",
+      "topic_id": 3966,
+      "url": "https://community.stape.io/t/hubspot-lookup-variable-for-google-tag-manager-server-container/3966",
+      "post_id": 9264
+    },
+    {
+      "repo": "stape-io/hubspot-tag",
+      "topic_id": 3967,
+      "url": "https://community.stape.io/t/hubspot-tag-for-google-tag-manager-server-side/3967",
+      "post_id": 9265
+    },
+    {
+      "repo": "stape-io/impact-tag",
+      "topic_id": 3968,
+      "url": "https://community.stape.io/t/impact-tag-for-google-tag-manager-server-side/3968",
+      "post_id": 9266
+    },
+    {
+      "repo": "stape-io/infobip-lookup-server-variable",
+      "topic_id": 3969,
+      "url": "https://community.stape.io/t/infobip-cdp-lookup-variable-for-gtm-server-side/3969",
+      "post_id": 9267
+    },
+    {
+      "repo": "stape-io/json-converter-variable",
+      "topic_id": 3970,
+      "url": "https://community.stape.io/t/json-converter-variable-for-google-tag-manager-server-container/3970",
+      "post_id": 9268
+    },
+    {
+      "repo": "stape-io/json-http-request-tag",
+      "topic_id": 3971,
+      "url": "https://community.stape.io/t/json-http-request-tag-for-google-tag-manager-server-side/3971",
+      "post_id": 9269
+    },
+    {
+      "repo": "stape-io/json-response-tag",
+      "topic_id": 3972,
+      "url": "https://community.stape.io/t/json-response-tag-for-google-tag-manager-server-side/3972",
+      "post_id": 9270
+    },
+    {
+      "repo": "stape-io/klaviyo-identify-tag",
+      "topic_id": 3973,
+      "url": "https://community.stape.io/t/klaviyo-identify-tag-for-google-tag-manager/3973",
+      "post_id": 9271
+    },
+    {
+      "repo": "stape-io/klaviyo-lookup-variable",
+      "topic_id": 3974,
+      "url": "https://community.stape.io/t/klaviyo-lookup-variable-for-gtm-server-side/3974",
+      "post_id": 9272
+    },
+    {
+      "repo": "stape-io/klaviyo-tag",
+      "topic_id": 3975,
+      "url": "https://community.stape.io/t/klaviyo-tag-for-google-tag-manager-server-side/3975",
+      "post_id": 9273
+    },
+    {
+      "repo": "stape-io/leadfeeder-variable",
+      "topic_id": 3976,
+      "url": "https://community.stape.io/t/leadfeeder-ip-enrich-variable-for-google-tag-manager-server-side/3976",
+      "post_id": 9274
+    },
+    {
+      "repo": "stape-io/line-yahoo-tag",
+      "topic_id": 3977,
+      "url": "https://community.stape.io/t/line-yahoo-conversion-api-tag-for-google-tag-manager-server-side/3977",
+      "post_id": 9275
+    },
+    {
+      "repo": "stape-io/linkedin-tag",
+      "topic_id": 3978,
+      "url": "https://community.stape.io/t/linkedin-conversion-api-tag-for-google-tag-manager-server-container/3978",
+      "post_id": 9276
+    },
+    {
+      "repo": "stape-io/logger-tag",
+      "topic_id": 3979,
+      "url": "https://community.stape.io/t/logger-tag-for-google-tag-manager-server-side/3979",
+      "post_id": 9277
+    },
+    {
+      "repo": "stape-io/mailchimp-tag",
+      "topic_id": 3980,
+      "url": "https://community.stape.io/t/mailchimp-tag-for-google-tag-manager-server-side/3980",
+      "post_id": 9278
+    },
+    {
+      "repo": "stape-io/mailgun-tag",
+      "topic_id": 3981,
+      "url": "https://community.stape.io/t/mailgun-tag-for-google-tag-manager-server-side/3981",
+      "post_id": 9279
+    },
+    {
+      "repo": "stape-io/math-variable",
+      "topic_id": 3982,
+      "url": "https://community.stape.io/t/math-variable-for-google-tag-manager-server-container/3982",
+      "post_id": 9280
+    },
+    {
+      "repo": "stape-io/matomo-advanced-tag",
+      "topic_id": 3983,
+      "url": "https://community.stape.io/t/matomo-advanced-tag-for-google-tag-manager-server-side/3983",
+      "post_id": 9281
+    },
+    {
+      "repo": "stape-io/md5-hash-variable",
+      "topic_id": 3984,
+      "url": "https://community.stape.io/t/md5-hash-variable-for-google-tag-manager-server-container/3984",
+      "post_id": 9282
+    },
+    {
+      "repo": "stape-io/merchant-center-variable",
+      "topic_id": 3985,
+      "url": "https://community.stape.io/t/google-merchant-center-lookup-variable-for-google-tag-manager-server/3985",
+      "post_id": 9283
+    },
+    {
+      "repo": "stape-io/meta-custom-audiences-tag",
+      "topic_id": 3986,
+      "url": "https://community.stape.io/t/meta-custom-audiences-tag-for-google-tag-manager-server-side/3986",
+      "post_id": 9284
+    },
+    {
+      "repo": "stape-io/microsoft-ads-offline-conversion-tag",
+      "topic_id": 3987,
+      "url": "https://community.stape.io/t/microsoft-ads-offline-conversion-tag-for-google-tag-manager-server-co/3987",
+      "post_id": 9285
+    },
+    {
+      "repo": "stape-io/microsoft-capi-tag",
+      "topic_id": 3988,
+      "url": "https://community.stape.io/t/microsoft-uet-conversion-api-tag-for-google-tag-manager-server-side/3988",
+      "post_id": 9286
+    },
+    {
+      "repo": "stape-io/mixpanel-tag",
+      "topic_id": 3989,
+      "url": "https://community.stape.io/t/mixpanel-tag-for-google-tag-manager-server-container/3989",
+      "post_id": 9287
+    },
+    {
+      "repo": "stape-io/nextdoor-tag",
+      "topic_id": 3990,
+      "url": "https://community.stape.io/t/nextdoor-conversions-api-tag-for-google-tag-manager-server-container/3990",
+      "post_id": 9288
+    },
+    {
+      "repo": "stape-io/object-builder-variable",
+      "topic_id": 3991,
+      "url": "https://community.stape.io/t/object-builder-variable-for-google-tag-manager-server-container/3991",
+      "post_id": 9289
+    },
+    {
+      "repo": "stape-io/object-property-extractor-variable",
+      "topic_id": 3992,
+      "url": "https://community.stape.io/t/object-property-extractor-variable-for-google-tag-manager-server-cont/3992",
+      "post_id": 9290
+    },
+    {
+      "repo": "stape-io/omnisend-tag",
+      "topic_id": 3993,
+      "url": "https://community.stape.io/t/omnisend-tag-for-gtm-server-side/3993",
+      "post_id": 9291
+    },
+    {
+      "repo": "stape-io/phone-number-formatter-variable",
+      "topic_id": 3994,
+      "url": "https://community.stape.io/t/phone-number-formatter-variable-for-google-tag-manager-server-contain/3994",
+      "post_id": 9292
+    },
+    {
+      "repo": "stape-io/phone-number-formatter-web-variable",
+      "topic_id": 3995,
+      "url": "https://community.stape.io/t/phone-number-formatter-variable-for-google-tag-manager-web-container/3995",
+      "post_id": 9293
+    },
+    {
+      "repo": "stape-io/piano-client",
+      "topic_id": 3996,
+      "url": "https://community.stape.io/t/piano-analytics-client-for-server-side-gtm-by-stape/3996",
+      "post_id": 9294
+    },
+    {
+      "repo": "stape-io/piano-tag",
+      "topic_id": 3997,
+      "url": "https://community.stape.io/t/piano-analytics-tag-for-google-tag-manager-server-side/3997",
+      "post_id": 9295
+    },
+    {
+      "repo": "stape-io/pinterest-capi-tag",
+      "topic_id": 3998,
+      "url": "https://community.stape.io/t/pinterest-conversion-api-tag-for-google-tag-manager-server-side/3998",
+      "post_id": 9296
+    },
+    {
+      "repo": "stape-io/pipedrive-tag",
+      "topic_id": 3999,
+      "url": "https://community.stape.io/t/pipedrive-tag-for-gtm-server-side/3999",
+      "post_id": 9297
+    },
+    {
+      "repo": "stape-io/piwik-pro-tag",
+      "topic_id": 4001,
+      "url": "https://community.stape.io/t/piwik-pro-tag-for-google-tag-manager-server-side/4001",
+      "post_id": 9299
+    },
+    {
+      "repo": "stape-io/postscript-tag",
+      "topic_id": 4003,
+      "url": "https://community.stape.io/t/postscript-tag-for-google-tag-manager-server-side/4003",
+      "post_id": 9301
+    },
+    {
+      "repo": "stape-io/pub-sub-publish-tag",
+      "topic_id": 4004,
+      "url": "https://community.stape.io/t/pub-sub-publish-tag-for-google-tag-manager-server-side/4004",
+      "post_id": 9302
+    },
+    {
+      "repo": "stape-io/query-replacer-variable",
+      "topic_id": 4005,
+      "url": "https://community.stape.io/t/query-replacer-variable-for-gtm-server-side/4005",
+      "post_id": 9303
+    },
+    {
+      "repo": "stape-io/quora-tag",
+      "topic_id": 4006,
+      "url": "https://community.stape.io/t/quora-conversions-api-tag-for-google-tag-manager-server-container/4006",
+      "post_id": 9304
+    },
+    {
+      "repo": "stape-io/rakuten-tag",
+      "topic_id": 4007,
+      "url": "https://community.stape.io/t/rakuten-tag-for-google-tag-manager-server-side/4007",
+      "post_id": 9305
+    },
+    {
+      "repo": "stape-io/real-boolean",
+      "topic_id": 4008,
+      "url": "https://community.stape.io/t/real-boolean-variable-for-google-tag-manager-server-container/4008",
+      "post_id": 9306
+    },
+    {
+      "repo": "stape-io/reddit-tag",
+      "topic_id": 4009,
+      "url": "https://community.stape.io/t/reddit-conversions-api-tag-for-google-tag-manager-server-container/4009",
+      "post_id": 9307
+    },
+    {
+      "repo": "stape-io/refersion-tag",
+      "topic_id": 4010,
+      "url": "https://community.stape.io/t/refersion-tag-for-google-tag-manager-server-side/4010",
+      "post_id": 9308
+    },
+    {
+      "repo": "stape-io/revcontent-tag",
+      "topic_id": 4011,
+      "url": "https://community.stape.io/t/revcontent-tag-for-google-tag-manager-server-side/4011",
+      "post_id": 9309
+    },
+    {
+      "repo": "stape-io/roq-ad-tag",
+      "topic_id": 4012,
+      "url": "https://community.stape.io/t/roq-ad-tag-for-google-tag-manager-server-side/4012",
+      "post_id": 9310
+    },
+    {
+      "repo": "stape-io/salesforce-tag",
+      "topic_id": 4013,
+      "url": "https://community.stape.io/t/salesforce-tag-for-google-tag-manager-server-side/4013",
+      "post_id": 9311
+    },
+    {
+      "repo": "stape-io/sendgrid-tag",
+      "topic_id": 4014,
+      "url": "https://community.stape.io/t/sendgrid-tag-for-google-tag-manager-server-side/4014",
+      "post_id": 9312
+    },
+    {
+      "repo": "stape-io/sendlane-tag",
+      "topic_id": 4015,
+      "url": "https://community.stape.io/t/sendlane-tag-for-google-tag-manager-server-side/4015",
+      "post_id": 9313
+    },
+    {
+      "repo": "stape-io/shareasale-tag",
+      "topic_id": 4016,
+      "url": "https://community.stape.io/t/shareasale-tag-for-google-tag-manager-server-side/4016",
+      "post_id": 9314
+    },
+    {
+      "repo": "stape-io/shopify-customer-privacy-tag",
+      "topic_id": 4017,
+      "url": "https://community.stape.io/t/shopify-customer-privacy-api-tag-for-google-tag-manager-web/4017",
+      "post_id": 9315
+    },
+    {
+      "repo": "stape-io/signals-gateway-tag",
+      "topic_id": 4018,
+      "url": "https://community.stape.io/t/signals-gateway-pixel-by-stape-for-google-tag-manager-web/4018",
+      "post_id": 9316
+    },
+    {
+      "repo": "stape-io/slack-notification-tag",
+      "topic_id": 4019,
+      "url": "https://community.stape.io/t/slack-notification-tag-for-google-tag-manager-server-side/4019",
+      "post_id": 9317
+    },
+    {
+      "repo": "stape-io/snapchat-tag",
+      "topic_id": 4020,
+      "url": "https://community.stape.io/t/snapchat-conversions-api-tag-for-google-tag-manager-server-container/4020",
+      "post_id": 9318
+    },
+    {
+      "repo": "stape-io/spectacle-tag",
+      "topic_id": 4022,
+      "url": "https://community.stape.io/t/spectacle-tag-for-google-tag-manager-server-side/4022",
+      "post_id": 9320
+    },
+    {
+      "repo": "stape-io/spotify-tag",
+      "topic_id": 4023,
+      "url": "https://community.stape.io/t/spotify-conversions-api-tag-for-google-tag-manager-server-side/4023",
+      "post_id": 9321
+    },
+    {
+      "repo": "stape-io/spreadsheet-tag",
+      "topic_id": 4024,
+      "url": "https://community.stape.io/t/google-sheets-tag-for-google-tag-manager-server-side/4024",
+      "post_id": 9322
+    },
+    {
+      "repo": "stape-io/spreadsheet-variable",
+      "topic_id": 4025,
+      "url": "https://community.stape.io/t/google-sheets-reader-variable-for-google-tag-manager-server-side/4025",
+      "post_id": 9323
+    },
+    {
+      "repo": "stape-io/stape-store-lookup-variable",
+      "topic_id": 4026,
+      "url": "https://community.stape.io/t/stape-store-lookup-variable-for-google-tag-manager-server-container/4026",
+      "post_id": 9324
+    },
+    {
+      "repo": "stape-io/stape-store-margin-lookup-variable",
+      "topic_id": 4027,
+      "url": "https://community.stape.io/t/stape-store-margin-lookup-variable-for-google-tag-manager-server-cont/4027",
+      "post_id": 9325
+    },
+    {
+      "repo": "stape-io/stape-store-restore-variable",
+      "topic_id": 4028,
+      "url": "https://community.stape.io/t/stape-store-restore-variable-for-google-tag-manager-server-container/4028",
+      "post_id": 9326
+    },
+    {
+      "repo": "stape-io/stape-store-writer-tag",
+      "topic_id": 4029,
+      "url": "https://community.stape.io/t/stape-store-writer-tag-for-google-tag-manager-server-side/4029",
+      "post_id": 9327
+    },
+    {
+      "repo": "stape-io/supabase-lookup-variable",
+      "topic_id": 4030,
+      "url": "https://community.stape.io/t/supabase-lookup-variable-for-google-tag-manager/4030",
+      "post_id": 9328
+    },
+    {
+      "repo": "stape-io/supabase-writer-tag",
+      "topic_id": 4031,
+      "url": "https://community.stape.io/t/supabase-writer-tag-for-google-tag-manager-server-side/4031",
+      "post_id": 9329
+    },
+    {
+      "repo": "stape-io/taboola-tag",
+      "topic_id": 4032,
+      "url": "https://community.stape.io/t/taboola-s2s-tag-for-google-tag-manager-server-side/4032",
+      "post_id": 9330
+    },
+    {
+      "repo": "stape-io/telegram-notification-tag",
+      "topic_id": 4033,
+      "url": "https://community.stape.io/t/telegram-notification-tag-for-google-tag-manager-server-side/4033",
+      "post_id": 9331
+    },
+    {
+      "repo": "stape-io/tiktok-tag",
+      "topic_id": 4034,
+      "url": "https://community.stape.io/t/tiktok-events-api-tag-for-google-tag-manager-server-container/4034",
+      "post_id": 9332
+    },
+    {
+      "repo": "stape-io/timestamp-converter-variable",
+      "topic_id": 4035,
+      "url": "https://community.stape.io/t/timestamp-converter-variable-for-google-tag-manager-server-container/4035",
+      "post_id": 9333
+    },
+    {
+      "repo": "stape-io/tradedoubler-tag",
+      "topic_id": 4036,
+      "url": "https://community.stape.io/t/tradedoubler-tag-for-google-tag-manager-server-side/4036",
+      "post_id": 9334
+    },
+    {
+      "repo": "stape-io/trafficstars-tag",
+      "topic_id": 4037,
+      "url": "https://community.stape.io/t/trafficstars-tag-for-gtm-server-side/4037",
+      "post_id": 9335
+    },
+    {
+      "repo": "stape-io/twilio-tag",
+      "topic_id": 4038,
+      "url": "https://community.stape.io/t/twilio-tag-for-google-tag-manager-server-side/4038",
+      "post_id": 9336
+    },
+    {
+      "repo": "stape-io/twitter-tag",
+      "topic_id": 4039,
+      "url": "https://community.stape.io/t/twitter-conversion-api-tag-for-google-tag-manager-server-side/4039",
+      "post_id": 9337
+    },
+    {
+      "repo": "stape-io/type-convertor-variable",
+      "topic_id": 4040,
+      "url": "https://community.stape.io/t/type-convertor-variable-for-google-tag-manager-server-container/4040",
+      "post_id": 9338
+    },
+    {
+      "repo": "stape-io/unique-event-id-variable",
+      "topic_id": 4042,
+      "url": "https://community.stape.io/t/unique-event-id-variable-for-google-tag-manager-web-container/4042",
+      "post_id": 9340
+    },
+    {
+      "repo": "stape-io/universal-conversions-server-variable",
+      "topic_id": 4043,
+      "url": "https://community.stape.io/t/universal-conversions-variable-for-google-tag-manager-server-container/4043",
+      "post_id": 9341
+    },
+    {
+      "repo": "stape-io/universal-conversions-variable",
+      "topic_id": 4044,
+      "url": "https://community.stape.io/t/universal-conversions-variable-for-google-tag-manager-web-container/4044",
+      "post_id": 9342
+    },
+    {
+      "repo": "stape-io/url-builder-variable",
+      "topic_id": 4045,
+      "url": "https://community.stape.io/t/url-builder-variable-for-google-tag-manager-server-container/4045",
+      "post_id": 9343
+    },
+    {
+      "repo": "stape-io/user-data-extractor-variable",
+      "topic_id": 4046,
+      "url": "https://community.stape.io/t/user-data-extractor-variable-for-google-tag-manager-server-container/4046",
+      "post_id": 9344
+    },
+    {
+      "repo": "stape-io/user-data-extractor-web-tag",
+      "topic_id": 4047,
+      "url": "https://community.stape.io/t/user-data-collector-tag-for-google-tag-manager-web/4047",
+      "post_id": 9345
+    },
+    {
+      "repo": "stape-io/viant-tag",
+      "topic_id": 4048,
+      "url": "https://community.stape.io/t/viant-conversion-api-tag-for-google-tag-manager-server-side/4048",
+      "post_id": 9346
+    },
+    {
+      "repo": "stape-io/voluum-tag",
+      "topic_id": 4049,
+      "url": "https://community.stape.io/t/voluum-tag-for-gtm-server-side/4049",
+      "post_id": 9347
+    },
+    {
+      "repo": "stape-io/voyado-tag",
+      "topic_id": 4050,
+      "url": "https://community.stape.io/t/voyado-tag-for-google-tag-manager-server-container/4050",
+      "post_id": 9348
+    },
+    {
+      "repo": "stape-io/weather-variable",
+      "topic_id": 4051,
+      "url": "https://community.stape.io/t/weather-variable-for-google-tag-manager-server-side/4051",
+      "post_id": 9349
+    },
+    {
+      "repo": "stape-io/webgains-tag",
+      "topic_id": 4052,
+      "url": "https://community.stape.io/t/webgains-tag-for-google-tag-manager-server-side/4052",
+      "post_id": 9350
+    },
+    {
+      "repo": "stape-io/xandr-tag",
+      "topic_id": 4053,
+      "url": "https://community.stape.io/t/xandr-tag-for-google-tag-manager-server-side/4053",
+      "post_id": 9351
+    },
+    {
+      "repo": "stape-io/yelp-tag",
+      "topic_id": 4054,
+      "url": "https://community.stape.io/t/yelp-conversions-api-tag-for-google-tag-manager-server-container/4054",
+      "post_id": 9352
+    },
+    {
+      "repo": "stape-io/advanced-lookup-table-variable",
+      "topic_id": 4055,
+      "url": "https://community.stape.io/t/advanced-lookup-table-variable-for-go-advanced-lookup-table-variable/4055",
+      "post_id": 9353
+    },
+    {
+      "repo": "stape-io/braze-tag",
+      "topic_id": 4056,
+      "url": "https://community.stape.io/t/braze-tag-for-google-tag-manager-server-side-braze-tag/4056",
+      "post_id": 9354
+    }
+  ],
+  "skipped_no_readme": [],
+  "failed_title_conflict": [],
+  "pending": [],
+  "failed": [],
+  "title_conflict_pairs": [
+    {
+      "original_title": "Advanced Lookup Table Variable for Google Tag Manager Server Container",
+      "repo": "stape-io/advanced-lookup-table-variable",
+      "disambiguated_title": "Advanced Lookup Table Variable for Go (advanced-lookup-table-variable)"
+    },
+    {
+      "original_title": "Braze Tag for Google Tag Manager Server-Side",
+      "repo": "stape-io/braze-tag",
+      "disambiguated_title": "Braze Tag for Google Tag Manager Server-Side (braze-tag)"
+    }
+  ]
+}
