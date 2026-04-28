@@ -1,0 +1,449 @@
+[
+  {
+    "repo": "stape-io/logger-tag"
+  },
+  {
+    "repo": "stape-io/reddit-tag"
+  },
+  {
+    "repo": "stape-io/universal-conversions-server-variable"
+  },
+  {
+    "repo": "stape-io/openai-capi-tag"
+  },
+  {
+    "repo": "stape-io/line-yahoo-tag"
+  },
+  {
+    "repo": "stape-io/openai-pixel-tag"
+  },
+  {
+    "repo": "stape-io/supabase-lookup-variable"
+  },
+  {
+    "repo": "stape-io/stape-store-margin-lookup-variable"
+  },
+  {
+    "repo": "stape-io/impact-tag"
+  },
+  {
+    "repo": "stape-io/viant-tag"
+  },
+  {
+    "repo": "stape-io/axon-tag"
+  },
+  {
+    "repo": "stape-io/linkedin-tag"
+  },
+  {
+    "repo": "stape-io/spreadsheet-tag"
+  },
+  {
+    "repo": "stape-io/file-proxy-client"
+  },
+  {
+    "repo": "stape-io/meta-custom-audiences-tag"
+  },
+  {
+    "repo": "stape-io/hubspot-lookup-variable"
+  },
+  {
+    "repo": "stape-io/duplicate-transaction-checker-variable"
+  },
+  {
+    "repo": "stape-io/piano-client"
+  },
+  {
+    "repo": "stape-io/tiktok-web-tag"
+  },
+  {
+    "repo": "stape-io/google-conversion-events-tag"
+  },
+  {
+    "repo": "stape-io/pinterest-capi-tag"
+  },
+  {
+    "repo": "stape-io/google-customer-match-tag"
+  },
+  {
+    "repo": "stape-io/microsoft-capi-tag"
+  },
+  {
+    "repo": "stape-io/fb-tag"
+  },
+  {
+    "repo": "stape-io/omnisend-tag"
+  },
+  {
+    "repo": "stape-io/spectacle-tag"
+  },
+  {
+    "repo": "stape-io/data-tag"
+  },
+  {
+    "repo": "stape-io/infobip-lookup-server-variable"
+  },
+  {
+    "repo": "stape-io/affiliate-future-server-tag"
+  },
+  {
+    "repo": "stape-io/taboola-tag"
+  },
+  {
+    "repo": "stape-io/user-data-extractor-web-tag"
+  },
+  {
+    "repo": "stape-io/signals-gateway-tag"
+  },
+  {
+    "repo": "stape-io/event-enricher-tag"
+  },
+  {
+    "repo": "stape-io/merchant-center-variable"
+  },
+  {
+    "repo": "stape-io/facebook-tag"
+  },
+  {
+    "repo": "stape-io/tiktok-tag"
+  },
+  {
+    "repo": "stape-io/brevo-tag"
+  },
+  {
+    "repo": "stape-io/gads-conversion-adjustments-tag"
+  },
+  {
+    "repo": "stape-io/activecampaign-tag"
+  },
+  {
+    "repo": "stape-io/data-client"
+  },
+  {
+    "repo": "stape-io/adform-tag"
+  },
+  {
+    "repo": "stape-io/pipedrive-tag"
+  },
+  {
+    "repo": "stape-io/yelp-tag"
+  },
+  {
+    "repo": "stape-io/amazon-tag"
+  },
+  {
+    "repo": "stape-io/google-customer-reviews-tag"
+  },
+  {
+    "repo": "stape-io/klaviyo-identify-tag"
+  },
+  {
+    "repo": "stape-io/json-converter-variable"
+  },
+  {
+    "repo": "stape-io/adtraction-tag"
+  },
+  {
+    "repo": "stape-io/query-replacer-variable"
+  },
+  {
+    "repo": "stape-io/adroll-tag"
+  },
+  {
+    "repo": "stape-io/customer-tag"
+  },
+  {
+    "repo": "stape-io/md5-hash-variable"
+  },
+  {
+    "repo": "stape-io/tradedoubler-tag"
+  },
+  {
+    "repo": "stape-io/awin-conversion-api-tag"
+  },
+  {
+    "repo": "stape-io/consent-parser-variable"
+  },
+  {
+    "repo": "stape-io/real-boolean"
+  },
+  {
+    "repo": "stape-io/math-variable"
+  },
+  {
+    "repo": "stape-io/xandr-tag"
+  },
+  {
+    "repo": "stape-io/voyado-tag"
+  },
+  {
+    "repo": "stape-io/twilio-tag"
+  },
+  {
+    "repo": "stape-io/effinity-tag"
+  },
+  {
+    "repo": "stape-io/piano-tag"
+  },
+  {
+    "repo": "stape-io/phone-number-formatter-variable"
+  },
+  {
+    "repo": "stape-io/phone-number-formatter-web-variable"
+  },
+  {
+    "repo": "stape-io/webgains-tag"
+  },
+  {
+    "repo": "stape-io/twitter-tag"
+  },
+  {
+    "repo": "stape-io/snapchat-tag"
+  },
+  {
+    "repo": "stape-io/roq-ad-tag"
+  },
+  {
+    "repo": "stape-io/sendlane-tag"
+  },
+  {
+    "repo": "stape-io/sendgrid-tag"
+  },
+  {
+    "repo": "stape-io/spotify-tag"
+  },
+  {
+    "repo": "stape-io/shareasale-tag"
+  },
+  {
+    "repo": "stape-io/nextdoor-tag"
+  },
+  {
+    "repo": "stape-io/revcontent-tag"
+  },
+  {
+    "repo": "stape-io/refersion-tag"
+  },
+  {
+    "repo": "stape-io/quora-tag"
+  },
+  {
+    "repo": "stape-io/postscript-tag"
+  },
+  {
+    "repo": "stape-io/salesforce-tag"
+  },
+  {
+    "repo": "stape-io/gads-conversion-improver-tag"
+  },
+  {
+    "repo": "stape-io/rakuten-tag"
+  },
+  {
+    "repo": "stape-io/microsoft-ads-offline-conversion-tag"
+  },
+  {
+    "repo": "stape-io/klaviyo-tag"
+  },
+  {
+    "repo": "stape-io/mixpanel-tag"
+  },
+  {
+    "repo": "stape-io/piwik-pro-tag"
+  },
+  {
+    "repo": "stape-io/awin-tag"
+  },
+  {
+    "repo": "stape-io/outbrain-tag"
+  },
+  {
+    "repo": "stape-io/hubspot-tag"
+  },
+  {
+    "repo": "stape-io/mailchimp-tag"
+  },
+  {
+    "repo": "stape-io/affiliate-conversion-tag"
+  },
+  {
+    "repo": "stape-io/attentive-tag"
+  },
+  {
+    "repo": "stape-io/mailgun-tag"
+  },
+  {
+    "repo": "stape-io/matomo-advanced-tag"
+  },
+  {
+    "repo": "stape-io/voluum-tag"
+  },
+  {
+    "repo": "stape-io/gads-offline-conversion-tag"
+  },
+  {
+    "repo": "stape-io/admitad-tag"
+  },
+  {
+    "repo": "stape-io/everflow-tag"
+  },
+  {
+    "repo": "stape-io/cj-tag"
+  },
+  {
+    "repo": "stape-io/trafficstars-tag"
+  },
+  {
+    "repo": "stape-io/exoclick-tag"
+  },
+  {
+    "repo": "stape-io/contactout-lookup-server"
+  },
+  {
+    "repo": "stape-io/klaviyo-lookup-variable"
+  },
+  {
+    "repo": "stape-io/facebook-leads-tag"
+  },
+  {
+    "repo": "stape-io/shopify-customer-privacy-tag"
+  },
+  {
+    "repo": "stape-io/universal-conversions-variable"
+  },
+  {
+    "repo": "stape-io/braze-server-tag"
+  },
+  {
+    "repo": "stape-io/stape-store-writer-tag"
+  },
+  {
+    "repo": "stape-io/stape-store-restore-variable"
+  },
+  {
+    "repo": "stape-io/stape-store-lookup-variable"
+  },
+  {
+    "repo": "stape-io/cookie-restore-tag"
+  },
+  {
+    "repo": "stape-io/json-http-request-tag"
+  },
+  {
+    "repo": "stape-io/gohighlevel-tag"
+  },
+  {
+    "repo": "stape-io/leadfeeder-variable"
+  },
+  {
+    "repo": "stape-io/spreadsheet-variable"
+  },
+  {
+    "repo": "stape-io/http-lookup-variable"
+  },
+  {
+    "repo": "stape-io/pub-sub-publish-tag"
+  },
+  {
+    "repo": "stape-io/user-data-extractor-variable"
+  },
+  {
+    "repo": "stape-io/firestore-request-delay-tag"
+  },
+  {
+    "repo": "stape-io/firestore-restore-variable"
+  },
+  {
+    "repo": "stape-io/url-builder-variable"
+  },
+  {
+    "repo": "stape-io/weather-variable"
+  },
+  {
+    "repo": "stape-io/telegram-notification-tag"
+  },
+  {
+    "repo": "stape-io/ga4-advanced-tag"
+  },
+  {
+    "repo": "stape-io/url-parser"
+  },
+  {
+    "repo": "stape-io/unique-event-id-variable"
+  },
+  {
+    "repo": "stape-io/slack-notification-tag"
+  },
+  {
+    "repo": "stape-io/server-side-template-for-gtm-v2"
+  },
+  {
+    "repo": "stape-io/days-in-seconds-variable"
+  },
+  {
+    "repo": "stape-io/advanced-lookup-table-variable"
+  },
+  {
+    "repo": "stape-io/type-convertor-variable"
+  },
+  {
+    "repo": "stape-io/supabase-writer-tag"
+  },
+  {
+    "repo": "stape-io/object-property-extractor-variable"
+  },
+  {
+    "repo": "stape-io/object-builder-variable"
+  },
+  {
+    "repo": "stape-io/array-builder-variable"
+  },
+  {
+    "repo": "stape-io/firestore-writer-tag"
+  },
+  {
+    "repo": "stape-io/json-response-tag"
+  },
+  {
+    "repo": "stape-io/data-variable"
+  },
+  {
+    "repo": "stape-io/facebook-offline-conversion-tag"
+  },
+  {
+    "repo": "stape-io/pirsch-tag-server"
+  },
+  {
+    "repo": "stape-io/plausible-analytics-tag-server"
+  },
+  {
+    "repo": "stape-io/umami-tag-server"
+  },
+  {
+    "repo": "stape-io/facebook-parameter-generator-variable"
+  },
+  {
+    "repo": "stape-io/timestamp-converter-variable"
+  },
+  {
+    "repo": "stape-io/channel-flow-tag"
+  },
+  {
+    "repo": "stape-io/exponea-client"
+  },
+  {
+    "repo": "stape-io/cookie-extender-tag"
+  },
+  {
+    "repo": "stape-io/snowplow-gtm-server-side-tag"
+  },
+  {
+    "repo": "stape-io/exponea-web-tag"
+  },
+  {
+    "repo": "stape-io/gtm-loader"
+  },
+  {
+    "repo": "stape-io/cookie-monster"
+  }
+]

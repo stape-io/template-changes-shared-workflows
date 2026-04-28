@@ -10,35 +10,45 @@ jobs:
   bootstrap:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
-      actions: write
+      contents: write
     outputs:
       topic_id: ${{ steps.resolve.outputs.topic_id }}
       post_id: ${{ steps.resolve.outputs.post_id }}
     steps:
-      - name: Check if already bootstrapped
-        id: check
-        run: |
-          if [ -n "${{ vars.COMMUNITY_TOPIC_ID }}" ] && [ -n "${{ vars.COMMUNITY_POST_ID }}" ]; then
-            echo "ready=true" >> $GITHUB_OUTPUT
-          else
-            echo "ready=false" >> $GITHUB_OUTPUT
-          fi
-
       - name: Checkout repository
-        if: steps.check.outputs.ready == 'false'
         uses: actions/checkout@v4
 
-      - name: Create Discourse topic and set repo vars
+      - name: Check community config file
+        id: check
+        run: |
+          set -euo pipefail
+          CONFIG_PATH=".github/community-config.json"
+
+          if [ -f "$CONFIG_PATH" ] && jq -e . "$CONFIG_PATH" >/dev/null 2>&1; then
+            TOPIC_ID=$(jq -r '.COMMUNITY_TOPIC_ID // empty' "$CONFIG_PATH")
+            POST_ID=$(jq -r '.COMMUNITY_POST_ID // empty' "$CONFIG_PATH")
+          else
+            TOPIC_ID=""
+            POST_ID=""
+          fi
+
+          if [[ "$TOPIC_ID" =~ ^[0-9]+$ ]] && [[ "$POST_ID" =~ ^[0-9]+$ ]]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+            echo "topic_id=$TOPIC_ID" >> "$GITHUB_OUTPUT"
+            echo "post_id=$POST_ID" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Create Discourse topic
         id: create
         if: steps.check.outputs.ready == 'false'
         env:
           API_KEY: ${{ secrets.COMMUNITY_API_KEY }}
           API_USERNAME: ${{ secrets.COMMUNITY_API_USERNAME }}
           CATEGORY_ID: ${{ vars.COMMUNITY_CATEGORY_ID }}
-          GH_TOKEN: ${{ secrets.PAT_FOR_VARIABLES }}
-          REPO: ${{ github.repository }}
         run: |
+          set -euo pipefail
           TITLE=$(awk '/^# /{print substr($0, 3); exit}' README.md)
           BODY=$(awk '
             /^# / && !found { found=1; next }
@@ -80,23 +90,44 @@ jobs:
             exit 1
           fi
 
-          echo "topic_id=$TOPIC_ID" >> $GITHUB_OUTPUT
-          echo "post_id=$POST_ID" >> $GITHUB_OUTPUT
+          echo "topic_id=$TOPIC_ID" >> "$GITHUB_OUTPUT"
+          echo "post_id=$POST_ID" >> "$GITHUB_OUTPUT"
 
-          gh variable set COMMUNITY_TOPIC_ID --body "$TOPIC_ID" --repo "$REPO"
-          gh variable set COMMUNITY_POST_ID --body "$POST_ID" --repo "$REPO"
+      - name: Save IDs to community config file
+        if: steps.check.outputs.ready == 'false'
+        run: |
+          set -euo pipefail
+          CONFIG_PATH=".github/community-config.json"
+          mkdir -p .github
+
+          jq -n \
+            --argjson topic "${{ steps.create.outputs.topic_id }}" \
+            --argjson post "${{ steps.create.outputs.post_id }}" \
+            '{COMMUNITY_TOPIC_ID: $topic, COMMUNITY_POST_ID: $post}' > "$CONFIG_PATH"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          if [ -z "$(git status --porcelain -- "$CONFIG_PATH")" ]; then
+            echo "community-config.json already up to date"
+            exit 0
+          fi
+
+          git add "$CONFIG_PATH"
+          git commit -m "chore: upsert community config"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
 
       - name: Resolve IDs
         id: resolve
         run: |
           if [ "${{ steps.check.outputs.ready }}" = "true" ]; then
-            TOPIC_ID="${{ vars.COMMUNITY_TOPIC_ID }}"
-            POST_ID="${{ vars.COMMUNITY_POST_ID }}"
+            TOPIC_ID="${{ steps.check.outputs.topic_id }}"
+            POST_ID="${{ steps.check.outputs.post_id }}"
             echo "Already bootstrapped: topic_id=$TOPIC_ID, post_id=$POST_ID"
           else
             TOPIC_ID="${{ steps.create.outputs.topic_id }}"
             POST_ID="${{ steps.create.outputs.post_id }}"
             echo "Newly bootstrapped: topic_id=$TOPIC_ID, post_id=$POST_ID"
           fi
-          echo "topic_id=$TOPIC_ID" >> $GITHUB_OUTPUT
-          echo "post_id=$POST_ID" >> $GITHUB_OUTPUT
+          echo "topic_id=$TOPIC_ID" >> "$GITHUB_OUTPUT"
+          echo "post_id=$POST_ID" >> "$GITHUB_OUTPUT"

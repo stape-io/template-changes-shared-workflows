@@ -10,8 +10,7 @@ jobs:
   bootstrap:
     uses: stape-io/template-changes-shared-workflows/.github/workflows/discourse-bootstrap.yml@main
     permissions:
-      actions: write
-      contents: read
+      contents: write
     secrets: inherit
 
   check-changes:
