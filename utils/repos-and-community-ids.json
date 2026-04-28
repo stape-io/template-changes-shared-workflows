@@ -26,8 +26,9 @@
     },
     {
       "repo": "stape-io/facebook-tag",
-      "url": "already_exists",
-      "topic_id": null
+      "url": "https://community.stape.io/t/facebook-conversions-api-tag-for-google-tag-manager-server-container/3858",
+      "topic_id": 3858,
+      "post_id": 9205
     },
     {
       "repo": "stape-io/adform-tag",
