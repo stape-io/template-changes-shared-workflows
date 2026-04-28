@@ -4,6 +4,8 @@ set -euo pipefail
 
 ORG="stape-io"
 FILE="template.tpl"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+OUTPUT_FILE="$SCRIPT_DIR/all-template-repos.json"
 results="[]"
 
 repos=$(gh repo list "$ORG" --limit 1000 --json nameWithOwner --jq '.[].nameWithOwner')
@@ -15,4 +17,5 @@ for repo in $repos; do
   fi
 done
 
+printf '%s\n' "$results" | jq '.' > "$OUTPUT_FILE"
 echo "$results"
