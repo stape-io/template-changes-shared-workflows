@@ -10,7 +10,7 @@ Any change must be made in the [./github](./github) directory, which will automa
 
 ## Github Variables and Secrets Required
 
-These workflows require the following GitHub variables and secrets to be set at the organization level. They are already set by Ops Team.
+These workflows require the following GitHub variables and secrets to be set at the organization level.
 
 | Type         	| Name                   	|
 |--------------	|------------------------	|
