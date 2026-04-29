@@ -7,9 +7,6 @@ on:
       head_sha:
         required: true
         type: string
-      commit_message:
-        required: true
-        type: string
       commit_url:
         required: true
         type: string
@@ -91,13 +88,15 @@ jobs:
 
       - name: Set final summary
         id: final_summary
+        env:
+          AI_RESPONSE: ${{ steps.summary.outputs.response }}
         run: |
           if [ "${{ steps.diff.outputs.is_new_file }}" = "true" ]; then
             echo "text=First version" >> $GITHUB_OUTPUT
           else
             {
               echo "text<<EOF"
-              printf '%s' "${{ steps.summary.outputs.response }}"
+              printf '%s' "$AI_RESPONSE"
               echo ""
               echo "EOF"
             } >> $GITHUB_OUTPUT
@@ -119,7 +118,6 @@ jobs:
           TOPIC_ID: ${{ inputs.topic_id }}
           API_KEY: ${{ secrets.COMMUNITY_API_KEY }}
           API_USERNAME: ${{ secrets.COMMUNITY_API_USERNAME }}
-          COMMIT_MSG: ${{ inputs.commit_message }}
           COMMIT_URL: ${{ inputs.commit_url }}
           REPO: ${{ github.repository }}
           REPO_NAME: ${{ github.event.repository.name }}
@@ -136,11 +134,10 @@ jobs:
 
           BODY=$(jq -n \
             --arg repo "$REPO" \
-            --arg msg "$COMMIT_MSG" \
             --arg url "$COMMIT_URL" \
             --arg summary "$AI_SUMMARY" \
             --arg gallery "$GALLERY_LINE" \
-            '"**" + $repo + "** — merged into `main`: [" + $msg + "](" + $url + ")\n\n" + $summary + "\n\n" + $gallery' \
+            '"**" + $repo + "** — updated: [view commit](" + $url + ")\n\n" + $summary + "\n\n" + $gallery' \
             | jq -r .)
 
           echo "Posting to Discourse topic ${TOPIC_ID}"

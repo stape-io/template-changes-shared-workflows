@@ -79,9 +79,8 @@ jobs:
             --data-raw "$(jq -n --arg raw "$FULL_BODY" '{post: {raw: $raw}}')")
 
           echo "Response: $STATUS"
-          cat /tmp/discourse_response.json
-
           if [ "$STATUS" != "200" ]; then
+            cat /tmp/discourse_response.json
             echo "Failed to update post"
             exit 1
           fi
