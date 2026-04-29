@@ -22,7 +22,7 @@ jobs:
       models: read
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
         with:
           fetch-depth: 0
           ref: ${{ inputs.head_sha }}
@@ -68,7 +68,7 @@ jobs:
       - name: Generate summary with Copilot
         id: summary
         if: steps.diff.outputs.is_new_file != 'true'
-        uses: actions/ai-inference@v1
+        uses: actions/ai-inference@b81b2afb8390ee6839b494a404766bef6493c7d9
         with:
           model: openai/gpt-4.1-mini
           prompt: |
