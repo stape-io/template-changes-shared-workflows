@@ -51,23 +51,26 @@ jobs:
           REPO_NAME="${{ github.event.repository.name }}"
 
           if [ "$GALLERY_LISTED" = "true" ]; then
-            GALLERY_LINE=$(cat <<EOF
-          ### GTM Gallery Status
-          🟢 [Listed](https://tagmanager.google.com/gallery/#/owners/stape-io/templates/${REPO_NAME})
-          EOF
-            )
+            GALLERY_STATUS_LINE="🟢 [Listed](https://tagmanager.google.com/gallery/#/owners/stape-io/templates/${REPO_NAME})"
           else
-            GALLERY_LINE=$(cat <<EOF
-          ### GTM Gallery Status
-          🔴 Not listed
-          EOF
-            )
+            GALLERY_STATUS_LINE="🔴 Not listed"
           fi
+
+          GALLERY_LINE="### GTM Gallery Status
+          ${GALLERY_STATUS_LINE}"
 
           GITHUB_LINE="### GitHub
           🟢 [Repository](${REPO_URL})"
 
-          FULL_BODY="$(printf '%s\n\n%s\n\n%s' "$BODY" "$GITHUB_LINE" "$GALLERY_LINE")"
+          if printf '%s' "$BODY" | grep -q "^### GTM Gallery Status$"; then
+            BODY=$(printf '%s' "$BODY" | awk -v status="$GALLERY_STATUS_LINE" '
+              /^### GTM Gallery Status$/ { print; getline; print status; next }
+              { print }
+            ')
+            FULL_BODY="$(printf '%s\n\n%s' "$BODY" "$GITHUB_LINE")"
+          else
+            FULL_BODY="$(printf '%s\n\n%s\n\n%s' "$BODY" "$GALLERY_LINE" "$GITHUB_LINE")"
+          fi
 
           echo "Updating Discourse post ${POST_ID}"
 
