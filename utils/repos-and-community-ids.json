@@ -823,7 +823,7 @@
       "post_id": 9353
     }
   ],
-  "missing": [
+  "deprecated": [
     {
       "repo": "stape-io/cookie-monster"
     },
