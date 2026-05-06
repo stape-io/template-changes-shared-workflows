@@ -56,6 +56,11 @@ jobs:
             found { started=1; print }
           ' README.md)
 
+          REPO_URL="${{ github.event.repository.html_url }}"
+          GITHUB_LINE="### GitHub
+          🟢 [Repository](${REPO_URL})"
+          BODY="${BODY}"$'\n\n'"${GITHUB_LINE}"
+
           if [ ${#TITLE} -gt 70 ]; then
             TITLE="${TITLE:0:69}…"
           fi

@@ -1,6 +1,12 @@
 {
   "created": [
     {
+      "repo": "stape-io/openai-capi-tag"
+    },
+    {
+      "repo": "stape-io/openai-pixel-tag"
+    },
+    {
       "repo": "stape-io/tiktok-web-tag",
       "url": "https://community.stape.io/t/tiktok-pixel-for-google-tag-manager-web/3860",
       "topic_id": 3860,
