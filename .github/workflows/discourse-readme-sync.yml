@@ -47,6 +47,17 @@ jobs:
           BODY: ${{ steps.readme.outputs.body }}
           GALLERY_LISTED: ${{ steps.gallery.outputs.listed }}
         run: |
+          TITLE=$(awk '/^# /{print substr($0, 3); exit}' README.md)
+          if [ ${#TITLE} -gt 70 ]; then
+            TITLE="${TITLE:0:69}…"
+          fi
+
+          TOPIC_ID=$(jq -r '.COMMUNITY_TOPIC_ID // empty' .github/community-config.json)
+          if ! [[ "$TOPIC_ID" =~ ^[0-9]+$ ]]; then
+            echo "Failed to read topic ID from .github/community-config.json"
+            exit 1
+          fi
+
           REPO_URL="${{ github.event.repository.html_url }}"
           REPO_NAME="${{ github.event.repository.name }}"
 
@@ -85,5 +96,22 @@ jobs:
           if [ "$STATUS" != "200" ]; then
             cat /tmp/discourse_response.json
             echo "Failed to update post"
+            exit 1
+          fi
+
+          echo "Updating Discourse topic title ${TOPIC_ID}"
+
+          TITLE_STATUS=$(curl -s -o /tmp/discourse_title_response.json -w "%{http_code}" \
+            -X PUT "https://community.stape.io/t/${TOPIC_ID}.json" \
+            -H "Content-Type: application/json" \
+            -H "Api-Key: ${API_KEY}" \
+            -H "Api-Username: ${API_USERNAME}" \
+            -H "User-Agent: curl/8.4.0" \
+            --data-raw "$(jq -n --arg title "$TITLE" '{title: $title}')")
+
+          echo "Title response: $TITLE_STATUS"
+          if [ "$TITLE_STATUS" != "200" ]; then
+            cat /tmp/discourse_title_response.json
+            echo "Failed to update topic title"
             exit 1
           fi
