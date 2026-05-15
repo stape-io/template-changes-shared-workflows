@@ -1,0 +1,38 @@
+name: One-time Gallery Notify (disposable)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - topic_id: '4112'
+            gallery_url: 'https://tagmanager.google.com/gallery/#/owners/stape-io/templates/openai-capi-tag'
+          - topic_id: '4111'
+            gallery_url: 'https://tagmanager.google.com/gallery/#/owners/stape-io/templates/openai-pixel-tag'
+    steps:
+      - name: Post to Community
+        env:
+          TOPIC_ID: ${{ matrix.topic_id }}
+          GALLERY_URL: ${{ matrix.gallery_url }}
+          API_KEY: ${{ secrets.COMMUNITY_API_KEY }}
+          API_USERNAME: ${{ secrets.COMMUNITY_API_USERNAME }}
+        run: |
+          BODY=$(printf 'The template is now available in the GTM Template Gallery.\nYou can import it in your container by adding a new tag and searching the template from the Gallery.\n\n%s' "$GALLERY_URL")
+
+          echo "Posting to Discourse topic ${TOPIC_ID}"
+          STATUS=$(curl -s -o /tmp/discourse_response.json -w "%{http_code}" \
+            -X POST "https://community.stape.io/posts.json" \
+            -H "Content-Type: application/json" \
+            -H "Api-Key: ${API_KEY}" \
+            -H "Api-Username: ${API_USERNAME}" \
+            --data-raw "$(jq -n --arg topic_id "$TOPIC_ID" --arg raw "$BODY" \
+              '{topic_id: ($topic_id | tonumber), raw: $raw}')")
+          echo "Response: $STATUS"
+          if [ "$STATUS" != "200" ]; then
+            cat /tmp/discourse_response.json
+            exit 1
+          fi
