@@ -10,17 +10,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
 
-      - name: Check GTM gallery status
-        id: gallery
-        run: |
-          STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
-            "https://tagmanager.google.com/api/gallery/owners/stape-io/templates/${{ github.event.repository.name }}")
-          if [ "$STATUS" = "200" ]; then
-            echo "listed=true" >> $GITHUB_OUTPUT
-          else
-            echo "listed=false" >> $GITHUB_OUTPUT
-          fi
-
       - name: Determine current badge state in README
         id: current
         run: |
@@ -36,8 +25,21 @@ jobs:
             echo "state=not-listed" >> $GITHUB_OUTPUT
           fi
 
+      - name: Check GTM gallery status
+        id: gallery
+        if: steps.current.outputs.state != 'listed'
+        run: |
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
+            "https://tagmanager.google.com/api/gallery/owners/stape-io/templates/${{ github.event.repository.name }}")
+          if [ "$STATUS" = "200" ]; then
+            echo "listed=true" >> $GITHUB_OUTPUT
+          else
+            echo "listed=false" >> $GITHUB_OUTPUT
+          fi
+
       - name: Determine desired badge state
         id: desired
+        if: steps.current.outputs.state != 'listed'
         run: |
           if [ "${{ steps.gallery.outputs.listed }}" = "true" ]; then
             echo "state=listed" >> $GITHUB_OUTPUT
@@ -46,12 +48,13 @@ jobs:
           fi
 
       - name: Log state decision
+        if: steps.current.outputs.state != 'listed'
         run: |
           echo "Current badge state: ${{ steps.current.outputs.state }}"
           echo "Desired badge state: ${{ steps.desired.outputs.state }}"
 
       - name: Update README with gallery status
-        if: steps.current.outputs.state != steps.desired.outputs.state
+        if: steps.current.outputs.state != 'listed' && steps.current.outputs.state != steps.desired.outputs.state
         env:
           GALLERY_LISTED: ${{ steps.gallery.outputs.listed }}
         run: |
@@ -86,7 +89,7 @@ jobs:
           printf '%s\n\n%s\n' "$CLEANED" "$GALLERY_LINE" > README.md
 
       - name: Commit and push changes
-        if: steps.current.outputs.state != steps.desired.outputs.state
+        if: steps.current.outputs.state != 'listed' && steps.current.outputs.state != steps.desired.outputs.state
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
