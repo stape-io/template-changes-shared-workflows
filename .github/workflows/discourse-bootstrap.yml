@@ -120,7 +120,12 @@ jobs:
 
           git add "$CONFIG_PATH"
           git commit -m "chore: upsert community config"
-          git push origin "HEAD:${GITHUB_REF_NAME}"
+          # Retry push with rebase to handle concurrent updates to main
+          for i in 1 2 3 4 5; do
+            git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin HEAD:"${GITHUB_REF_NAME}" && break
+            echo "Push rejected, retrying ($i)..."
+            sleep $((RANDOM % 5 + 1))
+          done
 
       - name: Resolve IDs
         id: resolve
