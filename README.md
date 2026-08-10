@@ -24,7 +24,7 @@ These workflows require the following GitHub variables and secrets to be set at 
 
 - `check-changes.yml` — Detects whether the push touched template.tpl or README.md; outputs those flags plus commit message and URL for downstream jobs.
 - `discourse-bootstrap.yml` — On first run, creates a Discourse topic from the README and stores the resulting `COMMUNITY_TOPIC_ID` / `COMMUNITY_POST_ID` in `.github/community-config.json`; on later runs reads the IDs from that file and returns them.
-- `discourse-notify.yml` — Diffs template.tpl, asks Copilot (gpt-4o) for a changelog summary, checks GTM Gallery status, and posts a new reply to the bootstrapped Discourse topic.
+- `discourse-notify.yml` — Diffs template.tpl, asks Copilot CLI (gpt-5.6-luna) for a changelog summary, checks GTM Gallery status, and posts a new reply to the bootstrapped Discourse topic.
 - `discourse-readme-sync.yml` — Parses the README body, checks Gallery status, and PUTs an updated version (with GitHub + Gallery badges appended) onto the bootstrapped Discourse post.
 - `gallery-status.yml` — Compares current vs. desired GTM Gallery badge in README; if they differ, rewrites the badge block and commits the change back to the repo.
 
@@ -41,3 +41,7 @@ These workflows require the following GitHub variables and secrets to be set at 
 - `all-template-repos.json` — Snapshot list of repositories with `template.tpl`.
 - `repos-and-community-ids.json` — Mapping of repositories to Discourse topic/post IDs.
 - `set-repo-community-ids.sh` — Writes IDs from `repos-and-community-ids.json` to each repository's `.github/community-config.json` and removes old `COMMUNITY_TOPIC_ID` / `COMMUNITY_POST_ID` repo variables.
+- `push-workflow-files.sh` — Pushes `gallery-status.yml` and `discourse-notify-and-readme-sync.yml` to `.github/workflows/` in every repo listed in `repos-and-community-ids.json`, creating or updating each file as needed.
+- `fetch-discourse-notify-repos.sh` — Lists repositories in `stape-io` that already have `.github/workflows/discourse-notify-and-readme-sync.yml` and writes the result to `discourse-notify-repos.json`.
+- `discourse-notify-repos.json` — Snapshot list of repositories with `discourse-notify-and-readme-sync.yml`.
+- `push-discourse-notify-workflow.sh` — Updates only `discourse-notify-and-readme-sync.yml` in every repo listed in `discourse-notify-repos.json` (used for the Copilot Models → Copilot CLI migration); does not create the file or touch any other workflow.
