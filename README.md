@@ -24,7 +24,7 @@ These workflows require the following GitHub variables and secrets to be set at 
 
 - `check-changes.yml` — Detects whether the push touched template.tpl or README.md; outputs those flags plus commit message and URL for downstream jobs.
 - `discourse-bootstrap.yml` — On first run, creates a Discourse topic from the README and stores the resulting `COMMUNITY_TOPIC_ID` / `COMMUNITY_POST_ID` in `.github/community-config.json`; on later runs reads the IDs from that file and returns them.
-- `discourse-notify.yml` — Diffs template.tpl, asks Copilot CLI (gpt-5.6-luna) for a changelog summary, checks GTM Gallery status, and posts a new reply to the bootstrapped Discourse topic.
+- `discourse-notify.yml` — Diffs template.tpl, asks Copilot CLI (gpt-6-luna) for a changelog summary, checks GTM Gallery status, and posts a new reply to the bootstrapped Discourse topic.
 - `discourse-readme-sync.yml` — Parses the README body, checks Gallery status, and PUTs an updated version (with GitHub + Gallery badges appended) onto the bootstrapped Discourse post.
 - `gallery-status.yml` — Compares current vs. desired GTM Gallery badge in README; if they differ, rewrites the badge block and commits the change back to the repo.
 
