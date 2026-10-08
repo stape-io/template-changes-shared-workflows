@@ -136,7 +136,7 @@ jobs:
           FULL_PROMPT="${PROMPT}
           ${DIFF_CONTENT}"
 
-          RESPONSE=$(copilot -p "$FULL_PROMPT" -s --yolo --no-ask-user --model gpt-5.6-luna)
+          RESPONSE=$(copilot -p "$FULL_PROMPT" -s --yolo --no-ask-user --model gpt-6-luna)
           # Cheap backstop: max-tokens had no CLI equivalent, so cap the captured response length.
           RESPONSE=$(printf '%s' "$RESPONSE" | head -c 2000)
 
